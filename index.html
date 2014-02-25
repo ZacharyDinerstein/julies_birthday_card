@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="styles.css">
+	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src='jquery-1.11.0.js'></script>
+	<title>Balloons</title>
+
+	<script>
+		function letThereBeBalloons(num_balloons){
+			for(var i=0; i<num_balloons; i++) {
+				var newh1 = $("<img class='balloons' src='http://www.clker.com/cliparts/x/Q/t/O/F/Z/single-balloon-md.png'>")
+				$('body').append(newh1);
+			};
+
+			$('.balloons').each(function(ind, element){
+				$(element).animate({
+					top: (Math.random()*200) -50 + '%',
+					left: (Math.random()*200) -50 + '%',
+					opacity: 0
+				}, 2000, 'linear', function(){
+									$(this).remove();
+
+									});
+
+			});
+		}
+
+		$(function(){
+			$('div').hide();
+			var message = setTimeout(function(){
+				$('.message1').fadeIn(2000, function(){
+					$('.message1').fadeOut(2000, function(){
+						$('.message2').fadeIn(2000, function(){
+							$('.message2').fadeOut(4000, function(){
+								$('.message3').fadeIn("slow");
+								var timeVar = setInterval(function(){
+								letThereBeBalloons(5)
+								}, 225)
+							});
+						});
+					});
+				});
+			}, 1000);
+
+
+			
+
+		});
+	</script>
+</head>
+<body>
+	<div class="message1">Once A Year</div>
+	<div class="message2">Everyone has a special day</div>
+	<div class="message3">Happy Birthday Julie!!!</div>
+	
+</body>
+</html>
